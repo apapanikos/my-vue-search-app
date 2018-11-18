@@ -4,7 +4,7 @@
         <div class="component-heading">
           <h1>Search for lyrics from top charts songs</h1>
         </div>
-        <p>This is the perfect tool to find lyrics</p>
+        <p>This is the perfect vue discover lyrics app</p>
         <Search/>
       </div>
       </div>
@@ -25,6 +25,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .home {
+    .component-heading{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      
+    h1 {
+      font-size: 3.5em;
+      font-weight: 400;
+      text-transform: capitalize;
+    }
 
+    }
+  }
 </style>
 

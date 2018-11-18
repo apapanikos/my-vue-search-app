@@ -2,14 +2,16 @@
     <div class="search">
         <div class="search-cont">
         <form class="searchForm" >
-            <input type="text" v-model="search" placeholder="Search lyrics">
+            <input type="text" v-model="search" placeholder="Song title...">
             <div class="search-icon-cont">
                <div class="search-icon"></div>
             </div>
         </form>
         </div>
         <div class="tracks">
-            <h2>TOP 10 US TRACKS</h2>
+           <div class="chart-songs-title">
+                <h2>TOP 10 US TRACKS</h2>
+           </div>
                <ul v-if="blogs.length > 0" class="results">
                    <li v-for="blog in blogs" :key="blog.track.track_id">
                        <h4>{{ blog.track.artist_name}}</h4>
@@ -20,6 +22,7 @@
                     </div>  
                    </li>
                </ul>
+                <ball-grid-pulse-loader color="#55E6C1" size="20px"></ball-grid-pulse-loader>
         </div>
     </div>
 </template>
@@ -135,10 +138,15 @@ export default {
 
 
   }
+         .chart-songs-title {
+             padding:2em 0;
+         }
         .results {
             flex-wrap: wrap;
             display: flex;
             list-style: none;
+            position: relative;
+
           
           li{
               position: relative;

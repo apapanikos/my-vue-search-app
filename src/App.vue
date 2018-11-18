@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/"><span>MyVue</span></router-link>
+      <router-link to="/"><font-awesome-icon icon="music" /><span> VueLyrics</span></router-link>
       <Menu/>
     </div>
       <div class="page">
