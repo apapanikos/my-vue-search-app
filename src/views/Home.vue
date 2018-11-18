@@ -2,9 +2,9 @@
     <div class="home">
       <div class="hero">
         <div class="component-heading">
-          <h1>Search for a blog</h1>
+          <h1>Search for lyrics from top charts songs</h1>
         </div>
-        <p>This is the perfect tool to discover blogs</p>
+        <p>This is the perfect tool to find lyrics</p>
         <Search/>
       </div>
       </div>

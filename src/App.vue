@@ -55,8 +55,8 @@ import Menu from '@/components/Menu.vue'
   }
 
 .hero {
-  width:100%;
-  height:80vh;
+  width:80%;
+  height:90vh;
   margin:0 auto;
   text-align: center;
 }
@@ -70,7 +70,8 @@ p {
     margin:0;
     line-height: 1.5;
     color: #e2e2e2;
-    max-width: 750px;
+    /* max-width: 750px; */
+    text-align: center;
   }
 #nav {
     background: #2C3A47;
