@@ -6,6 +6,7 @@
         </div>
         <p>This is the perfect vue discover lyrics app</p>
         <Search/>
+        <Tracks/>
       </div>
       </div>
 </template>
@@ -14,12 +15,14 @@
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
 import Search from '@/components/Search.vue'
+import Tracks from '@/components/Tracks.vue'
 
 export default {
   name: 'home',
   components: {
     HelloWorld,
-    Search
+    Search,
+    Tracks
   }
 }
 </script>
