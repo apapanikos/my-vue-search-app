@@ -2,7 +2,7 @@
     <div class="home">
       <div class="hero">
         <div class="component-heading">
-          <h1>Search for lyrics from top charts songs</h1>
+          <h1>Search lyrics from top charts songs</h1>
         </div>
         <p>This is the perfect vue discover lyrics app</p>
         <Search/>

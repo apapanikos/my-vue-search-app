@@ -28,6 +28,7 @@ import Menu from '@/components/Menu.vue'
 
 <style>
 @import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,400i,700');
 
 *{
   margin: 0;
@@ -37,7 +38,7 @@ import Menu from '@/components/Menu.vue'
 
   body {
     background: #2C3A47;
-    font-family:'Montserrat';
+    font-family: 'Poppins', sans-serif;;
   }
   html, body {
     height: 100%

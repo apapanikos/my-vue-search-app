@@ -3,9 +3,9 @@
         <div class="chart-songs-title">
                 <h2>TOP 10 US TRACKS</h2>
         </div>
-        <div v-if="blogs.length > 0" class="results">
-            <track-item v-for="blog in blogs" :key="blog.track.track_id" :blog="blog">
-            </track-item>
+        <div v-if="tracks.length > 0" class="results">
+             <track-item v-for="track in tracks" :key="track.track.track_id" :track="track">
+             </track-item>
         </div>
         <div v-else>
             <ball-grid-pulse-loader color="#55E6C1" size="20px"></ball-grid-pulse-loader>
@@ -24,7 +24,8 @@ export default {
     },
     data() {
         return {
-           blogs:[]
+            id:this.$route.params.id,
+           tracks:[]
         }
     },
     methods: {
@@ -38,7 +39,7 @@ export default {
        axios
       .get('https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=10&country=us&f_has_lyrics=1&apikey=4b7f42e95eff356453a45073f87f0954')
       .then(res => {
-          this.blogs = res.data.message.body.track_list
+          this.tracks = res.data.message.body.track_list
           console.log(res.data.message.body.track_list)
 
        })

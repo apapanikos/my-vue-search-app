@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import Blog from './views/Blog.vue'
+import Lyrics from './components/Lyrics.vue'
 
 Vue.use(Router)
 
@@ -21,10 +21,11 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
-      path:'/blog',
-      name:'blog',
-      component: Blog
+      path: '/lyrics/:id',
+      name: 'lyrics',
+      component: Lyrics,
+      props: true
+    },
 
-    }
   ]
 })

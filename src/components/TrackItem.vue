@@ -1,11 +1,13 @@
 <template>
     <div  class="track-item">
-            <h4>{{ blog.track.artist_name}}</h4>
-            <p><font-awesome-icon icon="play" /><span> Track:</span> {{ blog.track.track_name }}</p>
-            <p><font-awesome-icon icon="compact-disc" /><span> Album:</span> {{ blog.track.album_name }}</p>
+            <h4>{{ track.track.artist_name}}</h4>
+            <p><font-awesome-icon icon="play" /><span> Track:</span> {{ track.track.track_name }}</p>
+            <p><font-awesome-icon icon="compact-disc" /><span> Album:</span> {{ track.track.album_name }}</p>
+            <router-link :to="{ name: 'lyrics', params: {id: track.track.track_id } }">
             <div class="btn-lyrics">
-                <router-link to='/'><font-awesome-icon icon="book-open" /><span> View lyrics</span></router-link>
+                <font-awesome-icon icon="book-open" /><span> View lyrics</span>
             </div>  
+            </router-link>
     </div>
 </template>
 
@@ -13,7 +15,7 @@
 export default {
     name:'track-item',
     props: {
-        blog: {
+        track: {
             type: Object,
             required: true,
         }
@@ -44,12 +46,12 @@ export default {
                  padding:1em;
                  margin-top:1em;
 
-                a{
+             }
+             a{
                   
                   text-decoration: none; 
                   color:#fff;
               }
-             }
 
           }
 
