@@ -1,16 +1,37 @@
 <template>
-   <div class="lyrics">
-       <div class="track__lyrics">
-       <p> {{ lyrics.lyrics_body }}</p>
+ <div class="lyrics">
+   <div class="hero">
+       <router-link to="/">
+       <div class="btn-back">
+           <button>GO BACK</button>
        </div>
-        <!-- <div v-else>
-            <ball-grid-pulse-loader color="#55E6C1" size="20px"></ball-grid-pulse-loader>
-        </div> -->
+       </router-link>
+       <div class="lyrics__content">
+         <h2>{{ track.track_name }}  <span> by {{ track.artist_name }}</span></h2>
+         <p> {{ lyrics.lyrics_body }}</p>
+         <div class="lyrics__content-album divider">
+             <h4>Album Name: <span>  {{ track.album_name}}</span></h4>
+         </div>
+         <div v-if="track.primary_genres" class="lyrics__content-genre divider">
+            <div v-if="track.primary_genres.music_genre_list.length != 0"> 
+                <h4>Genre:<span>  {{ track.primary_genres.music_genre_list[0].music_genre.music_genre_name }}</span></h4>
+            </div>
+            <div v-else>
+                <h4>NO GENRE AVAILABLE</h4>
+            </div>
+         </div>
+         <div class="lyrics__content-release divider">
+             <h4>Released at:  <span>   {{ track.first_release_date | formatDate}}</span></h4>
+         </div>
+
+       </div>
    </div>
+ </div>
 </template>
 
 <script>
 import axios from 'axios';
+import moment from 'moment'
 export default {
     name: 'lyrics',
     props: {
@@ -26,7 +47,6 @@ export default {
         }
     },
     mounted() {
-        console.log(this.$route.params.id)
        axios
       .get('https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id='+this.$route.params.id+'&apikey=4b7f42e95eff356453a45073f87f0954')
       .then(res => {
@@ -38,12 +58,99 @@ export default {
        })
        .then(res =>{
            this.track = res.data.message.body.track
-           console.log(this.track)
+            console.log(this.track)
+           console.log(this.track.primary_genres.music_genre_list)
+
        })
-    //   .catch(error => console.log(error))
+      .catch(error => console.log(error))
+    },
+    filters: {
+        formatDate: function(value){
+            if (value) {
+            return moment(String(value)).format('DD/MM/YYYY')
+  }
+        }
     }
 }
 </script>
 <style lang="scss" scoped>
+
+   .lyrics {
+       .btn-back {
+          display: flex;
+          padding:2em 0;
+
+          button{
+              padding:1em 1.3em;
+              border: none;
+              background: #55E6C1;
+              cursor: pointer;
+              outline: 0;
+              text-decoration: none;
+              text-transform: uppercase;
+              font-weight: 700;
+              color:#fff;
+              box-shadow: 0 10px 30px rgba(121,141,152,.3), 0 10px 20px rgba(37,37,37,.05);
+              transition: all .3s ease-in-out;
+
+              &:hover{
+                box-shadow: 0 15px 50px rgba(121,141,152,.4);
+              }
+          }
+       }
+       
+       &__content{
+            position: relative;
+            background:#151c23;
+            padding: 1.5em;
+            box-shadow: 0 10px 30px #151c23, 0 10px 20px rgba(37,37,37,.05);
+            h2{
+                margin:1em 0;
+
+                span{
+                    font-weight: 400;
+                    color:#fff;
+                }
+
+            }
+            p{
+                padding:2em;
+            }
+            h4 {
+                margin:1em 0;
+                text-align: left;
+                span {
+                font-weight: 700;
+                color:#fff;
+            }
+
+            }
+            .divider{
+                position: relative;
+                 &:before{
+                  content: '';
+                  position:absolute;
+                  width: 100%;
+                  height: 1px;
+                  top: 0;
+                  margin-top: -10px;
+                  left: 0;
+                  background:#55E6C1;
+                }
+            }
+
+           &-album{
+                position: relative;
+                margin:2em 0;
+           }
+           &-genre {
+
+                position: relative;
+                margin:2em 0;
+
+           }
+
+       }
+   }
 
 </style>

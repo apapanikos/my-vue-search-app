@@ -21,6 +21,8 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.use(VueAxios, axios)
 
+Vue.use(require('vue-moment'));
+
 
 // export const blogBus = new Vue();
 // Vue.use(VueResource);

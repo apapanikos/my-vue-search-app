@@ -43,7 +43,9 @@ import Menu from '@/components/Menu.vue'
   html, body {
     height: 100%
   }
-
+    a{
+      text-decoration:none;
+    }
   .page {
     width:100%;
     background: #2C3A47;
@@ -53,6 +55,7 @@ import Menu from '@/components/Menu.vue'
     display: flex;
     align-items: center;
     justify-content: center;
+
   }
 
 .hero {

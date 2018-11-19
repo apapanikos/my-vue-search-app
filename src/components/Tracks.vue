@@ -1,7 +1,7 @@
 <template>
     <div class="tracks">
         <div class="chart-songs-title">
-                <h2>TOP 10 US TRACKS</h2>
+            <h2>TOP 10 US TRACKS</h2>
         </div>
         <div v-if="tracks.length > 0" class="results">
              <track-item v-for="track in tracks" :key="track.track.track_id" :track="track">
@@ -43,7 +43,7 @@ export default {
           console.log(res.data.message.body.track_list)
 
        })
-    //   .catch(error => console.log(error))
+      .catch(error => console.log(error))
   }
 }
 </script>

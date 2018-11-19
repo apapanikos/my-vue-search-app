@@ -30,7 +30,7 @@ export default {
               background:#151c23;
               margin:1em;
               padding: 1.5em;
-              box-shadow: inset 0 0 0 2px #2C3A47, 0 10px 30px rgba(44, 58, 71, .5);
+              box-shadow: 0 10px 30px #151c23, 0 10px 20px rgba(37,37,37,.05);
               z-index: 15;
               span{
                   font-weight: 700;
