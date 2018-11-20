@@ -2,9 +2,9 @@
     <div class="home">
       <div class="hero">
         <div class="component-heading">
-          <h1>Search lyrics from top charts songs</h1>
+          <h1>Explore song lyrics</h1>
         </div>
-        <p>Discover lyrics app made with <span>Vue.js</span></p>
+        <p>Discover lyrics app made with <span>Vue.js</span> and musixmatzh API</p>
         <Search/>
         <Tracks/>
       </div>
@@ -42,7 +42,7 @@ export default {
     }
     }
     span{
-        color:#55E6C1;
+        color:#4fc08d;
       }
   }
 </style>

@@ -27,10 +27,10 @@ export default {
           .track-item{
               position: relative;
               flex: 1 0 33%;  //25% for two columns
-              background:#151c23;
+              background:#f0eded;
               margin:1em;
               padding: 1.5em;
-              box-shadow: 0 10px 30px #151c23, 0 10px 20px rgba(37,37,37,.05);
+              box-shadow: 0 10px 30px #f0eded, 0 10px 20px rgba(160, 160, 160, 0.05);
               z-index: 15;
               span{
                   font-weight: 700;
@@ -41,7 +41,7 @@ export default {
                   margin:1em 0;
               }
              .btn-lyrics{
-                 background: #55E6C1;
+                 background: #6b6b6b;
                  width:100%;
                  padding:1em;
                  margin-top:1em;

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/"><font-awesome-icon icon="music" /><span> VueLyrics</span></router-link>
+      <router-link to="/"><span> VueLyrics</span></router-link>
       <Menu/>
     </div>
       <div class="page">
@@ -37,7 +37,7 @@ import Menu from '@/components/Menu.vue'
 }
 
   body {
-    background: #2C3A47;
+    background: #fff;
     font-family: 'Poppins', sans-serif;;
   }
   html, body {
@@ -48,8 +48,8 @@ import Menu from '@/components/Menu.vue'
     }
   .page {
     width:100%;
-    background: #2C3A47;
-    color: #55E6C1;
+    /* background: #2C3A47; */
+    color: rgb(20, 20, 20);
     height: 100vh;
     position: relative;
     display: flex;
@@ -73,19 +73,19 @@ p {
    font-size: 18px;
     margin:0;
     line-height: 1.5;
-    color: #e2e2e2;
+    color: #686868;
     /* max-width: 750px; */
     text-align: center;
   }
 #nav {
-    background: #2C3A47;
+    background: rgb(223, 223, 223);
     padding: 30px;
-    border-bottom: 2px solid #55E6C1;
+    /* border-bottom: 2px solid #55E6C1; */
 
   }
 
   #nav a{
-  color: #55E6C1;
+  color: #000;
   padding: 0 1em;
   font-size: 1em;
   text-decoration: none;
@@ -110,21 +110,21 @@ p {
 
   @keyframes going {
     from {
-      transform: translateY(0);
+      transform: translateX(0);
     }
     to {
-      transform: translateY(300px);
+      transform: translateX(300px);
       opacity: 0;
     }
   }
 
   @keyframes coming {
     from {
-      transform: translateY(300px);
+      transform: translateX(300px);
       opacity: 0;
     }
     to {
-      transform: translateY(0px);
+      transform: translateX(0px);
       opacity: 1;
     }
   }

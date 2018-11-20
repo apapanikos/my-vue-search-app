@@ -29,7 +29,7 @@
        </div>
    </div>
     <div v-else>
-        <ball-grid-pulse-loader color="#55E6C1" size="20px"></ball-grid-pulse-loader>
+        <ball-grid-pulse-loader color="#f0eded" size="20px"></ball-grid-pulse-loader>
     </div>
  </div>
 </template>
@@ -92,33 +92,33 @@ export default {
           button{
               padding:1em 1.3em;
               border: none;
-              background: #55E6C1;
+              background: #f0eded;
               cursor: pointer;
               outline: 0;
               text-decoration: none;
               text-transform: uppercase;
               font-weight: 700;
-              color:#fff;
-              box-shadow: 0 10px 30px rgba(121,141,152,.3), 0 10px 20px rgba(37,37,37,.05);
+              color:#202020;
+              box-shadow: 0 10px 30px #f0eded, 0 10px 20px rgba(160, 160, 160, 0.05);;
               transition: all .3s ease-in-out;
 
               &:hover{
-                box-shadow: 0 15px 50px rgba(121,141,152,.4);
+                box-shadow: 0 15px 50px rgba(112, 112, 112, 0.4);
               }
           }
        }
        
        &__content{
             position: relative;
-            background:#151c23;
+            background:#f0eded;
             padding: 1.5em;
-            box-shadow: 0 10px 30px #151c23, 0 10px 20px rgba(37,37,37,.05);
+            box-shadow: 0 10px 30px #f0eded, 0 10px 20px rgba(160, 160, 160, 0.05);
             h2{
                 margin:1em 0;
 
                 span{
                     font-weight: 400;
-                    color:#fff;
+                    color:#686868;
                 }
 
             }
@@ -130,7 +130,7 @@ export default {
                 text-align: left;
                 span {
                 font-weight: 700;
-                color:#fff;
+                color:#686868
             }
 
             }
@@ -144,7 +144,7 @@ export default {
                   top: 0;
                   margin-top: -10px;
                   left: 0;
-                  background:#55E6C1;
+                  background:#181818;
                 }
             }
 

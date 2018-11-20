@@ -8,7 +8,7 @@
              </track-item>
         </div>
         <div v-else>
-            <ball-grid-pulse-loader color="#55E6C1" size="20px"></ball-grid-pulse-loader>
+            <ball-grid-pulse-loader color="#f0eded" size="20px"></ball-grid-pulse-loader>
         </div>
     </div>
 </template>

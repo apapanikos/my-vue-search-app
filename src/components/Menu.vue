@@ -18,17 +18,17 @@ export default {
 
 <style lang="scss">
 .bm-menu {
-  background-color: #58B19F;
+  background-color: #dddcdc;
 
   .bm-cross-button {
       margin-right: 1em;
      .bm-cross {
-         background-color: #2C3A47;
+         background-color: rgb(24, 24, 24);
      }
   }
  span {
      padding:1em 0;
-     color: #2C3A47;
+     color: rgb(24, 24, 24);
  }
 }
 .bm-burger-bars:nth-of-type(2){
@@ -38,7 +38,7 @@ export default {
   top:60% !important;
 }
 .bm-burger-bars {
-    background-color: #55E6C1;
+    background-color: rgb(24, 24, 24);
 }
 
 .line-style {
