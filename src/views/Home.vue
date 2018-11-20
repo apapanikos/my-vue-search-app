@@ -4,7 +4,7 @@
         <div class="component-heading">
           <h1>Search lyrics from top charts songs</h1>
         </div>
-        <p>This is the perfect vue discover lyrics app</p>
+        <p>Discover lyrics app made with <span>Vue.js</span></p>
         <Search/>
         <Tracks/>
       </div>
@@ -38,9 +38,12 @@ export default {
       font-size: 3.5em;
       font-weight: 400;
       text-transform: capitalize;
-    }
 
     }
+    }
+    span{
+        color:#55E6C1;
+      }
   }
 </style>
 

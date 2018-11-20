@@ -1,12 +1,15 @@
 <template>
  <div class="lyrics">
-   <div class="hero">
+   <div v-if="this.lyrics.lyrics_body" class="hero">
+       <div class="lyrics__header">
+           <h1>Lyrics</h1>
+       </div>
        <router-link to="/">
        <div class="btn-back">
            <button>GO BACK</button>
        </div>
        </router-link>
-       <div class="lyrics__content">
+       <div  class="lyrics__content">
          <h2>{{ track.track_name }}  <span> by {{ track.artist_name }}</span></h2>
          <p> {{ lyrics.lyrics_body }}</p>
          <div class="lyrics__content-album divider">
@@ -23,9 +26,11 @@
          <div class="lyrics__content-release divider">
              <h4>Released at:  <span>   {{ track.first_release_date | formatDate}}</span></h4>
          </div>
-
        </div>
    </div>
+    <div v-else>
+        <ball-grid-pulse-loader color="#55E6C1" size="20px"></ball-grid-pulse-loader>
+    </div>
  </div>
 </template>
 
@@ -76,6 +81,10 @@ export default {
 <style lang="scss" scoped>
 
    .lyrics {
+       h1 {
+           font-weight: 400;
+           font-size: 3.5em;
+       }
        .btn-back {
           display: flex;
           padding:2em 0;
