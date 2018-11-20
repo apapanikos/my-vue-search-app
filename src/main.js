@@ -23,6 +23,8 @@ Vue.use(VueAxios, axios)
 
 Vue.use(require('vue-moment'));
 
+export const EventBus = new Vue();
+
 
 // export const blogBus = new Vue();
 // Vue.use(VueResource);

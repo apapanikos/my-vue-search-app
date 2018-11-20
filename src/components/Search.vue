@@ -10,9 +10,9 @@
         </div>
         <div class="search-result">
              <div v-if="results.length > 0">
-                 <div v-for="result in results" :key="result.track.track_id">
+                 <!-- <div v-for="result in results" :key="result.track.track_id">
                    <p>{{ result.track.track_name }}</p>
-                 </div>
+                 </div> -->
              </div>
              <div v-if="empty">
                  <span>Please text a song!</span>
@@ -24,16 +24,15 @@
 <script>
 import axios from 'axios';
 import TrackItem from './TrackItem'
-
+import { EventBus } from '../main.js';
 export default {
 
     data() {
         return {
-        //    blogs:[],
            search: '',
            results: [],
            empty: false,
-        //    TrackItem
+
         }
     },
     methods: {
@@ -43,17 +42,21 @@ export default {
             if(this.search && !this.search.trim().length == 0){
 
             //Debugging purposes
-            console.log(this.search)
+            // console.log(this.search)
 
             //Make the call to API with input content
             axios.get('https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track='+this.search+'&page_size=10&page=1&s_track_rating=desc&apikey=4b7f42e95eff356453a45073f87f0954')
             .then(res =>{
                 this.results = res.data.message.body.track_list
-                console.log(this.results)
+                // console.log(this.results)
                 this.search = ""
                 this.empty = false
+                
+            // Send the event on a channel (someone searched sth) with a payload (the results array)
+            EventBus.$emit('i-got-searched', this.results);
             })
             .catch(error => console.log(error))
+
 
             } else {
                 this.empty = true;
@@ -113,35 +116,6 @@ export default {
 
         :focus {
             color:#5e5e5e;
-        }
-
-        .search-icon-cont{
-            margin-left: -40px;
-
-            .search-icon {
-            width: 20px;
-            height: 20px;
-            top:10px;
-            border-radius: 20px;
-            border: 3px solid #1f1f1f;
-            display: block;
-            position: relative;
-            margin-left: 5px;
-
-                &:before {
-                    content: '';
-                    width: 3px;
-                    height: 15px;
-                    position: absolute;
-                    right: -6px;
-                    top: 10px;
-                    display: block;
-                    background-color: #1f1f1f;
-                    transform: rotate(-45deg);
-                }
-
-            }
-
         }
 
       }

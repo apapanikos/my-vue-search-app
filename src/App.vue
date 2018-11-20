@@ -60,7 +60,7 @@ import Menu from '@/components/Menu.vue'
 
 .hero {
   width:80%;
-  height:90vh;
+  height:100vh;
   margin:0 auto;
   text-align: center;
 }

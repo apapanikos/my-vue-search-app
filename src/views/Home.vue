@@ -4,7 +4,7 @@
         <div class="component-heading">
           <h1>Explore song lyrics</h1>
         </div>
-        <p>Discover lyrics app made with <span>Vue.js</span> and musixmatzh API</p>
+        <p>Discover lyrics app made with <span>Vue.js</span> and <strong> Musixmatch API</strong></p>
         <Search/>
         <Tracks/>
       </div>
@@ -43,7 +43,13 @@ export default {
     }
     span{
         color:#4fc08d;
+        font-weight: 700;
       }
+    strong {
+      color:#ff6050;
+      font-weight: 700;
+
+    }
   }
 </style>
 

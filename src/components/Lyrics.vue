@@ -1,6 +1,6 @@
 <template>
  <div class="lyrics">
-   <div v-if="this.lyrics.lyrics_body" class="hero">
+   <div v-if="!objectIsEmpty" class="hero">
        <div class="lyrics__header">
            <h1>Lyrics</h1>
        </div>
@@ -74,6 +74,14 @@ export default {
             if (value) {
             return moment(String(value)).format('DD/MM/YYYY')
   }
+        }
+    },
+    computed: {
+        objectIsEmpty: function(){
+            //Check if Object of the lyrics body has not yet fetched by the axios call
+            if(Object.keys(this.track).length === 0){
+                return true
+            }
         }
     }
 }
