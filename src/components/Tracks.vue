@@ -1,9 +1,10 @@
 <template>
     <div class="tracks">
         <div class="chart-songs-title">
-            <h2>TOP 10 US TRACKS</h2>
+            <h2 v-if="!haSearched">TOP 10 US TRACKS</h2>
+            <h2 v-else>Search results for <span>{{ searchTitle}}</span></h2>
         </div>
-        <div v-if="tracks.length > 0" class="results">
+        <div v-if="arrayIsNotEmpty" class="results">
              <track-item v-for="track in tracks" :key="track.track.track_id" :track="track">
              </track-item>
         </div>
@@ -27,29 +28,29 @@ export default {
         return {
             id:this.$route.params.id,
            tracks:[],
+           haSearched: false,
+           searchTitle:''
         }
     },
     methods: {
 
     },
     created() {
-    // // Listen for the i-got-searched event and payload:results
-    //  EventBus.$on('i-got-searched', results => {
-    //  console.log(results + 'from search function')
-    //  });
+
     },
 
-      mounted () {
+    mounted () {
 
         // Listen for the i-got-searched event and payload:search results
         EventBus.$on('i-got-searched', results => {
         
-        console.log(results + 'from search function')
+        this.haSearched = true
         
         //Check if results array is not empty, then replace trakcs array with results tracks
-        if(results.length > 0){
-           this.tracks = results
-           console.log(this.tracks)
+        if(results){
+           this.tracks = results[0]
+           this.searchTitle = results[1]
+           console.log(this.searchTitle)
         }
         });
        axios
@@ -60,7 +61,15 @@ export default {
 
        })
       .catch(error => console.log(error))
-  }
+  },
+    computed: {
+        arrayIsNotEmpty: function(){
+            //Check if array of has  been fetched
+            if(this.tracks.length > 0){
+                return true
+            }
+        }
+    }
 }
 </script>
 

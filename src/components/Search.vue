@@ -9,11 +9,6 @@
         </form>
         </div>
         <div class="search-result">
-             <div v-if="results.length > 0">
-                 <!-- <div v-for="result in results" :key="result.track.track_id">
-                   <p>{{ result.track.track_name }}</p>
-                 </div> -->
-             </div>
              <div v-if="empty">
                  <span>Please text a song!</span>
              </div>
@@ -48,12 +43,13 @@ export default {
             axios.get('https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track='+this.search+'&page_size=10&page=1&s_track_rating=desc&apikey=4b7f42e95eff356453a45073f87f0954')
             .then(res =>{
                 this.results = res.data.message.body.track_list
-                // console.log(this.results)
-                this.search = ""
-                this.empty = false
                 
             // Send the event on a channel (someone searched sth) with a payload (the results array)
-            EventBus.$emit('i-got-searched', this.results);
+            EventBus.$emit('i-got-searched', {0:this.results, 1:this.search})
+
+            
+            this.search = ""
+            this.empty = false
             })
             .catch(error => console.log(error))
 
