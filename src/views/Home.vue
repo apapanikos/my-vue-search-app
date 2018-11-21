@@ -6,7 +6,7 @@
             <div class="hero__heading-title">
               <h1>Explore song lyrics</h1>
             </div>
-            <p>Discover lyrics app made with <span>Vue.js</span> and <strong> Musixmatch API</strong></p>
+            <p>Discover lyrics app made with <a v-bind:href="url1"><span> Vue.js</span> </a>and <a v-bind:href="url2"> <span> Musixmatch API</span> </a></p>
             <Search/>
           </div>
         </div>
@@ -26,7 +26,13 @@ export default {
   components: {
     HelloWorld,
     Search,
-    Tracks
+    Tracks,
+  },
+  data(){
+    return {
+      url1:'https://vuejs.org/',
+      url2:'https://developer.musixmatch.com/'
+    }
   }
 }
 </script>
@@ -39,14 +45,14 @@ export default {
       height:100vh;
       margin:0 auto;
       text-align: center;
-      background: #f3f3f3;
+      background: #f9f9f9;
 
       .hero{
 
          display: flex;
          align-items: center;
          justify-content: center;
-         height: 60vh;
+         height: 50vh;
          background:#00b894; //linear-gradient(120deg, #00cec9, #00b894);
          width: 100%;
 
@@ -69,11 +75,12 @@ export default {
             }
             p{
               color:#2d3436;
+              letter-spacing: .2em;
               line-height: 1.7
             }
             span{
                 // color:#4fc08d;
-                color:#fff;
+                color:#55efc4;
                 font-weight: 700;
               }
             strong {

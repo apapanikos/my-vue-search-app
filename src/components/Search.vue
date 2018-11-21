@@ -89,26 +89,29 @@ export default {
           width:500px;
           box-shadow: 0 30px 25px -19px rgba(63,63,63,0.3) , 0 10px 20px #00b894;
          
-         input {
+         input[type="text"] {
              font-size: 15px;
-             font-style:italic;
+             font-family : inherit;
              padding:1.2em;
              width:90%;
              background:transparent;
              outline:none;
-             color: #fff;
+             color: #2d3436;
              border:none;    
          }
         ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
             color: #b2bec3;
+            font-style:italic;
             opacity: 1; /* Firefox */
         }
 
         :-ms-input-placeholder { /* Internet Explorer 10-11 */
+            font-style:italic;
             color:#b2bec3;
         }
 
         ::-ms-input-placeholder { /* Microsoft Edge */
+            font-style:italic;
             color:#b2bec3;
         }
 
@@ -116,7 +119,7 @@ export default {
             color:#b2bec3;
         }
         .search-icon-cont{
-            background:linear-gradient(90deg, #00b894, #03caa2, #00cec9);
+            background:linear-gradient(45deg,#00b894, #55efc4);
             width:45px;
             height:45px;
             border-radius: 45px;

@@ -11,10 +11,11 @@
 
 <script>
 import Menu from './components/Menu'
+
     export default {
      name: 'app',
      components:{
-       Menu
+       Menu,
      }
     }
 </script>
@@ -31,7 +32,7 @@ import Menu from './components/Menu'
 }
 
   body {
-    background: #f3f3f3;
+    background: #f9f9f9;
     font-family: 'Poppins', sans-serif;;
   }
   html, body {
@@ -42,7 +43,6 @@ import Menu from './components/Menu'
     }
   .page {
     width:100%;
-    /* background: #2C3A47; */
     color: rgb(20, 20, 20);
     height: 100vh;
     position: relative;

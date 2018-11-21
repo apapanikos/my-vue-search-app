@@ -1,7 +1,7 @@
 <template>
     <div class="tracks">
         <div class="chart-songs-title">
-            <h2 v-if="!haSearched">TOP 10 US TRACKS</h2>
+            <h2 v-if="!haSearched">Top 10 US Charts songs</h2>
             <h2 v-else>Search results for <span>{{ searchTitle}}</span></h2>
         </div>
         <div v-if="arrayIsNotEmpty" class="results">
@@ -9,7 +9,7 @@
              </track-item>
         </div>
         <div v-else>
-            <ball-grid-pulse-loader color="#f0eded" size="20px"></ball-grid-pulse-loader>
+            <ball-grid-pulse-loader color="#00b894" size="20px"></ball-grid-pulse-loader>
         </div>
     </div>
 </template>
@@ -76,10 +76,24 @@ export default {
 <style lang="scss">
    
       .tracks {
-          width:90%;
+          width:80%;
           margin:0 auto;
+
         .chart-songs-title {
              padding:2em 0;
+
+             h2{
+                 font-size:2.5em;
+                 color:#2d3436;
+                
+                span{
+                 color:transparent;
+                 background-image:linear-gradient(45deg,#00b894, #55efc4,#55efc4);
+                 -webkit-background-clip: text;
+                 background-clip :text;
+                }
+
+             }
          }
 
         .results {
