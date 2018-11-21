@@ -54,7 +54,7 @@ export default {
         }
         });
        axios
-      .get('https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=10&country=us&f_has_lyrics=1&apikey=4b7f42e95eff356453a45073f87f0954')
+      .get('https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=12&country=us&f_has_lyrics=1&apikey=4b7f42e95eff356453a45073f87f0954')
       .then(res => {
           this.tracks = res.data.message.body.track_list
         //   console.log(res.data.message.body.track_list)
@@ -76,7 +76,8 @@ export default {
 <style lang="scss">
    
       .tracks {
-
+          width:90%;
+          margin:0 auto;
         .chart-songs-title {
              padding:2em 0;
          }

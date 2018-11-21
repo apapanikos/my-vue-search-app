@@ -20,8 +20,12 @@
 import axios from 'axios';
 import TrackItem from './TrackItem'
 import { EventBus } from '../main.js';
-export default {
 
+
+export default {
+    components:{
+      
+    },
     data() {
         return {
            search: '',
@@ -36,25 +40,25 @@ export default {
             //Check if input is empty
             if(this.search && !this.search.trim().length == 0){
 
-            //Debugging purposes
-            // console.log(this.search)
 
             //Make the call to API with input content
-            axios.get('https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track='+this.search+'&page_size=10&page=1&s_track_rating=desc&apikey=4b7f42e95eff356453a45073f87f0954')
+            axios.get('https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track='+this.search+'&page_size=12&page=1&s_track_rating=desc&apikey=4b7f42e95eff356453a45073f87f0954')
             .then(res =>{
                 this.results = res.data.message.body.track_list
                 
             // Send the event on a channel (someone searched sth) with a payload (the results array)
             EventBus.$emit('i-got-searched', {0:this.results, 1:this.search})
 
-            
+           //Empty input and set the "false input" variable handler to false 
             this.search = ""
             this.empty = false
+
             })
             .catch(error => console.log(error))
 
 
             } else {
+                //Show "false input" error message and empty results array
                 this.empty = true;
                 this.results = []
             }
@@ -79,39 +83,79 @@ export default {
       .searchForm { 
           display: flex;
           justify-content: center;
-          background:#f0eded;
+          align-items: center;
+          background:#fff;
           border-radius: 2000px;
-          width:280px;
-          box-shadow: 0 10px 30px #f0eded, 0 10px 20px rgba(95, 95, 95, 0.05);
+          width:500px;
+          box-shadow: 0 30px 25px -19px rgba(63,63,63,0.3) , 0 10px 20px #00b894;
          
          input {
-             font-size: 16px;
+             font-size: 15px;
              font-style:italic;
-             font-family: 'Montserrat';
-             padding:1em;
+             padding:1.2em;
+             width:90%;
              background:transparent;
              outline:none;
              color: #fff;
-             border-top: none;
-             border-right:none;
-             border-left: none;
-             border-bottom:none;
+             border:none;    
          }
         ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-            color: #5e5e5e;
+            color: #b2bec3;
             opacity: 1; /* Firefox */
         }
 
         :-ms-input-placeholder { /* Internet Explorer 10-11 */
-            color:#5e5e5e;
+            color:#b2bec3;
         }
 
         ::-ms-input-placeholder { /* Microsoft Edge */
-            color:#5e5e5e;
+            color:#b2bec3;
         }
 
         :focus {
-            color:#5e5e5e;
+            color:#b2bec3;
+        }
+        .search-icon-cont{
+            background:linear-gradient(90deg, #00b894, #03caa2, #00cec9);
+            width:45px;
+            height:45px;
+            border-radius: 45px;
+            margin-left:-5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+                .search-icon {
+                    background: none;
+                    position: relative;
+                    height: 15px;
+                    width: 15px;
+                    padding: 0;
+                    border-radius: 100%;
+                    outline: 0;
+                    border: 2px solid white;
+                    margin-top: -5px;
+                    margin-left: -6px;
+                    color: inherit;
+                    cursor: pointer;
+                    // -webkit-transition: 0.2s ease-in-out;
+                    // transition: 0.2s ease-in-out;
+                    // -webkit-transform: translate(-100%, -50%);
+                    // -ms-transform: translate(-100%, -50%);
+                    // transform: translate(-100%, -50%);
+                    }
+
+                    &:before {
+                    content: "";
+                    position: absolute;
+                    width: 7px;
+                    height: 2px;
+                    background-color: #fff;
+                    -webkit-transform: rotate(45deg);
+                    -ms-transform: rotate(45deg);
+                    transform: rotate(45deg);
+                    margin-top: 5px;
+                    margin-left: 5px;
+                    }
         }
 
       }

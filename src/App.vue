@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/"><span> VueLyrics</span></router-link>
-      <Menu/>
-    </div>
+       <Menu/>
       <div class="page">
           <transition name="router-anim" mode="out-in">
           <router-view/>
@@ -13,14 +10,11 @@
 </template>
 
 <script>
-import { Slide } from 'vue-burger-menu' 
-import Menu from '@/components/Menu.vue'
-
+import Menu from './components/Menu'
     export default {
      name: 'app',
      components:{
        Menu
-
      }
     }
 </script>
@@ -37,7 +31,7 @@ import Menu from '@/components/Menu.vue'
 }
 
   body {
-    background: #fff;
+    background: #f3f3f3;
     font-family: 'Poppins', sans-serif;;
   }
   html, body {
@@ -58,38 +52,14 @@ import Menu from '@/components/Menu.vue'
 
   }
 
-.hero {
-  width:80%;
-  height:100vh;
-  margin:0 auto;
-  text-align: center;
-}
-.component-heading {
-  padding:2em 0;
-
-}
   
 p {
    font-size: 18px;
     margin:0;
     line-height: 1.5;
-    color: #686868;
-    /* max-width: 750px; */
     text-align: center;
   }
-#nav {
-    background: rgb(223, 223, 223);
-    padding: 30px;
-    /* border-bottom: 2px solid #55E6C1; */
 
-  }
-
-  #nav a{
-  color: #000;
-  padding: 0 1em;
-  font-size: 1em;
-  text-decoration: none;
-  }
 
   #app {
     background: #fff;

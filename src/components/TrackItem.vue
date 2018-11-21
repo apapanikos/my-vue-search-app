@@ -1,12 +1,21 @@
 <template>
     <div  class="track-item">
-            <h4>{{ track.track.artist_name}}</h4>
-            <p><font-awesome-icon icon="play" /><span> Track:</span> {{ track.track.track_name }}</p>
-            <p><font-awesome-icon icon="compact-disc" /><span> Album:</span> {{ track.track.album_name }}</p>
             <router-link :to="{ name: 'lyrics', params: {id: track.track.track_id } }">
-            <div class="btn-lyrics">
-                <font-awesome-icon icon="book-open" /><span> View lyrics</span>
-            </div>  
+                <div class="track-header">
+                    <font-awesome-icon icon="music" size="3x" color="#04886e"/>
+                </div>
+                <h4>{{ track.track.artist_name}}</h4>
+                <div class="track-body">
+                    <p><font-awesome-icon icon="play" /><span> Track:</span> {{ track.track.track_name }}</p>
+                <p><font-awesome-icon icon="compact-disc" /><span> Album:</span> {{ track.track.album_name }}</p>
+                </div>
+                <div class="track-footer">
+
+                        <div class="btn-lyrics">
+                            <font-awesome-icon icon="arrow-right" size="lg"/>
+                        </div>  
+
+                </div>
             </router-link>
     </div>
 </template>
@@ -24,33 +33,74 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
           .track-item{
               position: relative;
-              flex: 1 0 33%;  //25% for two columns
-              background:#f0eded;
-              margin:1em;
-              padding: 1.5em;
-              box-shadow: 0 10px 30px #f0eded, 0 10px 20px rgba(160, 160, 160, 0.05);
-              z-index: 15;
+              flex: 1 0 25%;
+              background:#fff;
+              margin:1.4em;
+            //   padding: 1.5em;
+              box-shadow: 0 10px 50px rgba(63,63,63,0.1) , 0 10px 20px rgba(121, 121, 121, 0.05);
+              transition: all .4s ease-in-out;
+                a{
+                    
+                    text-decoration: none; 
+                    color:#fff
+
+                }
+
+              .track-header{
+                  background:#00b894;
+                  height:200px;
+                  display: flex;
+                  justify-content: center;
+                  align-items:center;
+              }
+
+              h4{
+                  padding:.5em;
+                  color:#2d3436;
+              }
+
+              .track-body{
+                  padding: .5em 1em;
+              }
               span{
                   font-weight: 700;
+                  color:#2d3436;
               }
               p{
                   font-size: 16px;
                   text-align: left;
                   margin:1em 0;
+                  color:#2d3436;
               }
-             .btn-lyrics{
-                 background: #6b6b6b;
-                 width:100%;
-                 padding:1em;
-                 margin-top:1em;
 
-             }
-             a{
-                  
-                  text-decoration: none; 
-                  color:#fff;
+              .track-footer{
+                  width: 100%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+
+                .btn-lyrics{
+                    background:linear-gradient(90deg, #00b894, #03caa2, #00cec9);
+                    width:60px;
+                    height:60px;
+                    border-radius: 60px;
+                    transform:translateY(50%);
+                    padding:1em;
+                    margin-top:1em;
+                    display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  transition: all .4s ease-in-out;
+
+                }
+        
+              }
+
+              &:hover{
+                  transform: translateY(-20px);
               }
 
           }
