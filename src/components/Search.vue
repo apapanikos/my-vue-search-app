@@ -10,7 +10,7 @@
         </div>
         <div class="search-result">
              <div v-if="empty">
-                 <span>Please text a song!</span>
+                 <span>Please fill out this field!</span>
              </div>
         </div>
     </div>

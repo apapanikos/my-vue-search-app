@@ -60,6 +60,8 @@ export default {
        axios
       .get('https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id='+this.$route.params.id+'&apikey=4b7f42e95eff356453a45073f87f0954')
       .then(res => {
+
+          //Store the response results in lyrics array
           this.lyrics = res.data.message.body.lyrics
         //   console.log(this.lyrics)
 
@@ -67,9 +69,11 @@ export default {
 
        })
        .then(res =>{
+
+           //Store the track response results in track array
            this.track = res.data.message.body.track
-        //     console.log(this.track)
-        //    console.log(this.track.primary_genres.music_genre_list)
+        
+           //Store the response share url result in share string
            this.share = res.data.message.body.track.track_share_url
 
        })
@@ -210,11 +214,12 @@ export default {
                   cursor:pointer;
                   text-transform: uppercase;
                   padding:.8em 2em;
-                  background:linear-gradient(45deg, #00b894, #55efc4);
+                  background:#00b894;
                   transform: translateY(100%);
                   transition:all .2s ease-in-out;
 
                   &:hover{
+                    background:#02caa2;
                     box-shadow: 0 10px 30px #f0eded, 0 10px 20px rgba(160, 160, 160, 0.05);
                   }
               }

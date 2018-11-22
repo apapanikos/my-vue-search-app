@@ -66,7 +66,7 @@ export default {
                   padding-top:1em;
                   font-size: 1.1em;
                   font-weight: 400;
-                  max-width:310px;
+                  max-width:280px;
                   color:#f9f9f9;
               }
 
