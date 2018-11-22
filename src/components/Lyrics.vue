@@ -1,9 +1,6 @@
 <template>
  <div class="lyrics">
    <div v-if="!objectIsEmpty">
-       <div class="lyrics__header">
-           <h2>Lyrics</h2>
-       </div>
        <router-link to="/">
         <div class="btn-back">
            <div class="back"><font-awesome-icon icon="arrow-left" size="lg"/></div> 
@@ -12,6 +9,7 @@
        <div  class="lyrics__content">
          <h1>{{ track.track_name }}</h1>
          <span> by {{ track.artist_name }}</span>
+         <h3>Lyrics</h3>
          <p> {{ lyrics.lyrics_body }}</p>
          <div class="lyrics-info">
             <div class="lyrics__content-album divider">
@@ -108,11 +106,6 @@ export default {
            color:#fff;
        }
 
-       h2 {
-           font-weight: 400;
-           font-size: 2em;
-           text-align: center;
-       }
        .btn-back {
           display: flex;
           padding:2em 0;
@@ -156,6 +149,10 @@ export default {
                  -webkit-background-clip: text;
                  background-clip :text;
                 }
+            h3{
+                text-align: center;
+                margin-top: 1em;
+            }
             p{
                 padding:2em 4em;
                 color:#686868;
