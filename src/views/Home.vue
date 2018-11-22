@@ -39,6 +39,7 @@ export default {
 
 <style lang="scss" scoped>
   .home {
+    width:100%;
 
       .content {
       width:100%;

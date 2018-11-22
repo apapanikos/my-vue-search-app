@@ -46,7 +46,7 @@ export default {
             .then(res =>{
                 this.results = res.data.message.body.track_list
                 
-            // Send the event on a channel (someone searched sth) with a payload (the results array)
+            // Send the event on a channel (someone searched sth) with a payload (the results array and the input word(s))
             EventBus.$emit('i-got-searched', {0:this.results, 1:this.search})
 
            //Empty input and set the "false input" variable handler to false 

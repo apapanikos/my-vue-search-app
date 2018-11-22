@@ -76,7 +76,7 @@ export default {
 <style lang="scss">
    
       .tracks {
-          width:80%;
+          max-width: 1000px;
           margin:0 auto;
 
         .chart-songs-title {
