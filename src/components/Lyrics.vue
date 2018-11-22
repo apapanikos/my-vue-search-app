@@ -1,35 +1,41 @@
 <template>
  <div class="lyrics">
-   <div v-if="!objectIsEmpty" class="hero">
+   <div v-if="!objectIsEmpty">
        <div class="lyrics__header">
-           <h1>Lyrics</h1>
+           <h2>Lyrics</h2>
        </div>
        <router-link to="/">
-       <div class="btn-back">
-           <button>GO BACK</button>
-       </div>
+        <div class="btn-back">
+           <div class="back"><font-awesome-icon icon="arrow-left" size="lg"/></div> 
+        </div>  
        </router-link>
        <div  class="lyrics__content">
-         <h2>{{ track.track_name }}  <span> by {{ track.artist_name }}</span></h2>
+         <h1>{{ track.track_name }}</h1>
+         <span> by {{ track.artist_name }}</span>
          <p> {{ lyrics.lyrics_body }}</p>
-         <div class="lyrics__content-album divider">
-             <h4>Album Name: <span>  {{ track.album_name}}</span></h4>
-         </div>
-         <div v-if="track.primary_genres" class="lyrics__content-genre divider">
-            <div v-if="track.primary_genres.music_genre_list.length != 0"> 
-                <h4>Genre:<span>  {{ track.primary_genres.music_genre_list[0].music_genre.music_genre_name }}</span></h4>
+         <div class="lyrics-info">
+            <div class="lyrics__content-album divider">
+                <h5><span>Album Name:   </span>{{ track.album_name}}</h5>
             </div>
-            <div v-else>
-                <h4>NO GENRE AVAILABLE</h4>
+            <div v-if="track.primary_genres" class="lyrics__content-genre divider">
+                <div v-if="track.primary_genres.music_genre_list.length != 0"> 
+                    <h5><span>Genre:   </span>{{ track.primary_genres.music_genre_list[0].music_genre.music_genre_name }}</h5>
+                </div>
+                <div v-else>
+                    <h5>NO GENRE AVAILABLE</h5>
+                </div>
             </div>
-         </div>
-         <div class="lyrics__content-release divider">
-             <h4>Released at:  <span>   {{ track.first_release_date | formatDate}}</span></h4>
-         </div>
+            <div class="lyrics__content-release divider">
+                <h5><span>Released at:   </span>{{ track.first_release_date | formatDate}}</h5>
+            </div>
+        </div>
+        <div class="share-lyrics">
+            <a v-bind:href="share">share</a>
+        </div>
        </div>
    </div>
     <div v-else>
-        <ball-grid-pulse-loader color="#f0eded" size="20px"></ball-grid-pulse-loader>
+        <ball-grid-pulse-loader color="#00b894" size="20px"></ball-grid-pulse-loader>
     </div>
  </div>
 </template>
@@ -49,6 +55,7 @@ export default {
         return {
            track:[],
            lyrics: [],
+           share:''
         }
     },
     mounted() {
@@ -56,15 +63,16 @@ export default {
       .get('https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id='+this.$route.params.id+'&apikey=4b7f42e95eff356453a45073f87f0954')
       .then(res => {
           this.lyrics = res.data.message.body.lyrics
-          console.log(this.lyrics)
+        //   console.log(this.lyrics)
 
           return axios.get('https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.get?track_id='+this.$route.params.id+'&apikey=4b7f42e95eff356453a45073f87f0954')
 
        })
        .then(res =>{
            this.track = res.data.message.body.track
-            console.log(this.track)
-           console.log(this.track.primary_genres.music_genre_list)
+        //     console.log(this.track)
+        //    console.log(this.track.primary_genres.music_genre_list)
+           this.share = res.data.message.body.track.track_share_url
 
        })
       .catch(error => console.log(error))
@@ -72,12 +80,15 @@ export default {
     filters: {
         formatDate: function(value){
             if (value) {
+
+            //Format the release date with moment librady
             return moment(String(value)).format('DD/MM/YYYY')
   }
         }
     },
     computed: {
         objectIsEmpty: function(){
+
             //Check if Object of the lyrics body has not yet fetched by the axios call
             if(Object.keys(this.track).length === 0){
                 return true
@@ -89,82 +100,127 @@ export default {
 <style lang="scss" scoped>
 
    .lyrics {
-       h1 {
+
+       max-width: 1000px;
+       margin:0 auto;
+
+       a{
+           color:#fff;
+       }
+
+       h2 {
            font-weight: 400;
-           font-size: 3.5em;
+           font-size: 2em;
+           text-align: center;
        }
        .btn-back {
           display: flex;
           padding:2em 0;
 
-          button{
-              padding:1em 1.3em;
-              border: none;
-              background: #f0eded;
-              cursor: pointer;
-              outline: 0;
-              text-decoration: none;
-              text-transform: uppercase;
-              font-weight: 700;
-              color:#202020;
-              box-shadow: 0 10px 30px #f0eded, 0 10px 20px rgba(160, 160, 160, 0.05);;
-              transition: all .3s ease-in-out;
+          .back{
+                background:linear-gradient(-45deg,#00b894, #55efc4);
+                width:60px;
+                height:60px;
+                border-radius: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all .2s ease-in-out;
 
               &:hover{
-                box-shadow: 0 15px 50px rgba(112, 112, 112, 0.4);
+                transform:scale(1.1);
+                transform-origin: center center center;
+                box-shadow: 0 10px 30px #f0eded, 0 10px 20px rgba(160, 160, 160, 0.05);
               }
           }
        }
        
        &__content{
-            position: relative;
-            background:#f0eded;
-            padding: 1.5em;
-            box-shadow: 0 10px 30px #f0eded, 0 10px 20px rgba(160, 160, 160, 0.05);
-            h2{
-                margin:1em 0;
+              position: relative;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              background:#fff;
+              padding:2em;
+              border-radius:8px;
+              box-shadow: 0 10px 50px rgba(63,63,63,0.1) , 0 10px 20px rgba(121, 121, 121, 0.05);
 
-                span{
-                    font-weight: 400;
-                    color:#686868;
-                }
-
+            h1{
+                font-size: 4em;
             }
+            span{
+                font-weight: 400;
+                font-size: 2rem;
+                color:transparent;
+                 background-image:linear-gradient(45deg,#00b894, #55efc4,#55efc4);
+                 -webkit-background-clip: text;
+                 background-clip :text;
+                }
             p{
-                padding:2em;
-            }
-            h4 {
-                margin:1em 0;
-                text-align: left;
-                span {
-                font-weight: 700;
-                color:#686868
+                padding:2em 4em;
+                color:#686868;
             }
 
-            }
-            .divider{
-                position: relative;
-                 &:before{
-                  content: '';
-                  position:absolute;
-                  width: 100%;
-                  height: 1px;
-                  top: 0;
-                  margin-top: -10px;
-                  left: 0;
-                  background:#181818;
+            .lyrics-info{
+
+                margin-top: 1em;
+
+                h5 {
+                text-align: left;
+                 color:#1f1f1f;
+                 font-size: 1em;
+                 font-weight: 400;
+
+                    span {
+                    font-size: 1em;
+                    font-weight: 700;
+                    color:#00b894;
+                   }
+
                 }
+                .divider{
+                    position: relative;
+                    &:before{
+                    content: '';
+                    position:absolute;
+                    width: 100%;
+                    height: 1px;
+                    top: 0;
+                    margin-top: -10px;
+                    left: 0;
+                    background:#00b894;
+                    }
+                }
+
             }
 
            &-album{
-                position: relative;
-                margin:2em 0;
+
+                margin:1.5em 0;
            }
            &-genre {
 
-                position: relative;
-                margin:2em 0;
+                margin:1.5em 0;
 
+           }
+
+           .share-lyrics{
+              width: 100%;
+              display: flex;
+              justify-content: flex-end;
+
+              a{
+                  cursor:pointer;
+                  text-transform: uppercase;
+                  padding:.8em 2em;
+                  background:linear-gradient(45deg, #00b894, #55efc4);
+                  transform: translateY(100%);
+                  transition:all .2s ease-in-out;
+
+                  &:hover{
+                    box-shadow: 0 10px 30px #f0eded, 0 10px 20px rgba(160, 160, 160, 0.05);
+                  }
+              }
            }
 
        }

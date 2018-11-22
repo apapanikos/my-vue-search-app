@@ -10,6 +10,7 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons'
 import { faCompactDisc } from '@fortawesome/free-solid-svg-icons'
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import 'vue-loaders/dist/vue-loaders.css';
@@ -18,7 +19,7 @@ import { BallGridPulseLoader} from 'vue-loaders';
 
 Vue.component(BallGridPulseLoader.name, BallGridPulseLoader);
 
-library.add(faMusic,faPlay,faCompactDisc,faBookOpen, faArrowRight,faUser)
+library.add(faMusic,faPlay,faCompactDisc,faBookOpen, faArrowRight,faUser, faArrowLeft)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

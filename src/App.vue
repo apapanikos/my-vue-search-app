@@ -44,6 +44,7 @@ import Menu from './components/Menu'
   .page {
     width:100%;
     color: rgb(20, 20, 20);
+    background:#f9f9f9;
     height: 100vh;
     position: relative;
     display: flex;

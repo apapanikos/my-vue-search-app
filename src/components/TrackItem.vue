@@ -10,11 +10,9 @@
                     <p><font-awesome-icon icon="compact-disc" color="#00b894" />  {{ track.track.album_name }}</p>
                 </div>
                 <div class="track-footer">
-
                         <div class="btn-lyrics">
                             <font-awesome-icon icon="arrow-right" size="lg"/>
                         </div>  
-
                 </div>
             </router-link>
     </div>
