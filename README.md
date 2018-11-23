@@ -5,8 +5,8 @@ Fetch top 10 us charts songs with axios and search song title to discover lyrics
 Vue.js is one of most promising JavaScript frameworks. This is project is about me practising with Vue.js features like routing, transitions, API fetching data, event buses, component communication and many more. I am about to add more features, make it more stable, responsive and optimized.
 
 ## Tech/framework used
--Vue.js__
--Axios__
+-Vue.js <br />
+-Axios <br />
 -Scss
 
 ## Project setup
