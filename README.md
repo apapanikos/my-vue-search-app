@@ -42,6 +42,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 ## License
-A short snippet describing the license (MIT, Apache etc)
 
 MIT © [Alex Papanikos]()
