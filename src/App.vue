@@ -2,7 +2,7 @@
   <div id="app">
        <Menu/>
       <div class="page">
-          <transition name="router-anim" mode="out-in">
+        <transition name="router-anim" mode="out-in">
           <router-view/>
         </transition>
       </div>
@@ -11,6 +11,7 @@
 
 <script>
 import Menu from './components/Menu'
+import Footer from './components/Footer'
 
     export default {
      name: 'app',
@@ -45,7 +46,7 @@ import Menu from './components/Menu'
     width:100%;
     color: rgb(20, 20, 20);
     background:#f9f9f9;
-    height: 100vh;
+    height: 100%;
     position: relative;
     display: flex;
     align-items: center;
@@ -65,7 +66,7 @@ p {
   #app {
     background: #fff;
     width: 100%;  
-    height: 100vh;
+    height: 100%;
   }
 
   .router-anim-enter-active {

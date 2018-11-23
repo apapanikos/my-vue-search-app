@@ -7,11 +7,11 @@
               <h1>Explore song lyrics</h1>
             </div>
             <p>Discover lyrics app made with <a v-bind:href="url1"><span> Vue.js</span> </a>and <a v-bind:href="url2"> <span> Musixmatch API</span></a> by <span>Alex Papanikos. </span></p>
-            <h3>View <span> <a v-bind:href="git">github</a> </span> for more...</h3>
             <Search/>
           </div>
         </div>
         <Tracks/>
+        <Footer />
       </div>
       </div>
 </template>
@@ -21,6 +21,8 @@
 import HelloWorld from '@/components/HelloWorld.vue'
 import Search from '@/components/Search.vue'
 import Tracks from '@/components/Tracks.vue'
+import Footer from '@/components/Footer.vue'
+
 
 export default {
   name: 'home',
@@ -28,12 +30,12 @@ export default {
     HelloWorld,
     Search,
     Tracks,
+    Footer
   },
   data(){
     return {
       url1:'https://vuejs.org/',
       url2:'https://developer.musixmatch.com/',
-      git:'https://github.com/apapanikos'
     }
   }
 }
@@ -86,16 +88,6 @@ export default {
                 color:#55efc4;
                 font-weight: 700;
               }
-             h3{
-               font-weight: 400;
-               span{
-                 font-weight: 700;
-                 a{
-                    color:#fff;
-                 }
-
-               }
-             }
 
          }
            
